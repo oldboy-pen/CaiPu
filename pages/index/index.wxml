@@ -1,0 +1,102 @@
+<view class="container">
+  <!-- 轮播图区域 -->
+  <swiper class="banner" indicator-dots autoplay circular interval="3000">
+    <swiper-item>
+      <image src="/images/banner1.jpg" mode="aspectFill" class="banner-image" binderror="onBannerError" data-index="0"></image>
+    </swiper-item>
+    <swiper-item>
+      <image src="/images/banner2.jpg" mode="aspectFill" class="banner-image" binderror="onBannerError" data-index="1"></image>
+    </swiper-item>
+  </swiper>
+
+  <!-- 功能入口 -->
+  <view class="quick-nav">
+    <view class="nav-item" bindtap="goToCategory">
+      <text class="nav-icon">📱</text>
+      <text class="nav-text">点菜</text>
+    </view>
+    <view class="nav-item" bindtap="goToCart">
+      <text class="nav-icon">🛒</text>
+      <text class="nav-text">购物车</text>
+    </view>
+    <view class="nav-item" bindtap="goToOrder">
+      <text class="nav-icon">📋</text>
+      <text class="nav-text">订单</text>
+    </view>
+    <view class="nav-item">
+      <text class="nav-icon">📍</text>
+      <text class="nav-text">门店</text>
+    </view>
+  </view>
+
+  <!-- 推荐菜品 -->
+  <view class="section">
+    <view class="section-title">
+      <text>今日推荐</text>
+      <text class="more" bindtap="goToCategory">更多 ></text>
+    </view>
+    <scroll-view class="recommend-scroll" scroll-x show-scrollbar="false">
+      <view class="recommend-item" wx:for="{{recommendList}}" wx:key="id">
+        <view class="dish-image-wrapper">
+          <image class="dish-image" src="{{item.image}}" mode="aspectFill" bindtap="viewDetail" data-dish="{{item}}" binderror="onImageError" data-id="{{item.id}}" wx:if="{{!item.imageError}}"></image>
+          <view class="dish-placeholder" wx:else bindtap="viewDetail" data-dish="{{item}}">
+            <text class="placeholder-emoji">{{item.placeholder}}</text>
+          </view>
+        </view>
+        <view class="dish-info">
+          <text class="dish-name" bindtap="viewDetail" data-dish="{{item}}">{{item.name}}</text>
+          <view class="dish-tags" wx:if="{{item.tags && item.tags.length > 0}}">
+            <text class="tag hot-tag" wx:if="{{item.hot}}">热销</text>
+            <text class="tag" wx:for="{{item.tags}}" wx:for-item="tag" wx:key="*index" wx:if="{{index < 2}}">{{tag}}</text>
+          </view>
+          <view class="dish-bottom">
+            <view class="price-wrapper">
+              <text class="dish-price">¥{{item.price}}</text>
+              <text class="original-price" wx:if="{{item.originalPrice}}">¥{{item.originalPrice}}</text>
+            </view>
+            <text class="dish-sold">已售{{item.sold}}</text>
+          </view>
+        </view>
+        <view class="add-btn" bindtap="addToCart" data-dish="{{item}}" catchtap="true">+</view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 热门菜品 -->
+  <view class="section">
+    <view class="section-title">
+      <text>热门菜品</text>
+    </view>
+    <view class="hot-list">
+      <view class="hot-item card" wx:for="{{recommendList}}" wx:key="id">
+        <view class="hot-image-wrapper">
+          <image class="hot-image" src="{{item.image}}" mode="aspectFill" bindtap="viewDetail" data-dish="{{item}}" binderror="onImageError" data-id="{{item.id}}" wx:if="{{!item.imageError}}"></image>
+          <view class="hot-placeholder" wx:else bindtap="viewDetail" data-dish="{{item}}">
+            <text class="placeholder-emoji">{{item.placeholder}}</text>
+          </view>
+        </view>
+        <view class="hot-info">
+          <view class="hot-header">
+            <text class="hot-name" bindtap="viewDetail" data-dish="{{item}}">{{item.name}}</text>
+            <view class="rating" wx:if="{{item.rating}}">
+              <text class="rating-star">★</text>
+              <text class="rating-score">{{item.rating}}</text>
+            </view>
+          </view>
+          <text class="hot-desc" bindtap="viewDetail" data-dish="{{item}}">{{item.description}}</text>
+          <view class="hot-tags" wx:if="{{item.tags && item.tags.length > 0}}">
+            <text class="hot-tag hot-tag" wx:if="{{item.hot}}">热销</text>
+            <text class="hot-tag" wx:for="{{item.tags}}" wx:for-item="tag" wx:key="*index" wx:if="{{index < 3}}">{{tag}}</text>
+          </view>
+          <view class="hot-bottom">
+            <view class="price-wrapper">
+              <text class="hot-price">¥{{item.price}}</text>
+              <text class="hot-original-price" wx:if="{{item.originalPrice}}">¥{{item.originalPrice}}</text>
+            </view>
+            <view class="add-btn-small" bindtap="addToCart" data-dish="{{item}}" catchtap="true">加入购物车</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

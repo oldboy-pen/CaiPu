@@ -1,0 +1,38 @@
+<view class="container">
+  <!-- 空订单状态 -->
+  <view class="empty-orders" wx:if="{{isEmpty}}">
+    <text class="empty-icon">📋</text>
+    <text class="empty-text">暂无订单记录</text>
+    <view class="empty-btn" bindtap="goToCategory">去点菜</view>
+  </view>
+
+  <!-- 订单列表 -->
+  <view class="orders-content" wx:else>
+    <view class="order-item card" wx:for="{{orders}}" wx:key="id">
+      <view class="order-header">
+        <text class="order-time">{{item.createTime}}</text>
+        <text class="order-status {{item.status === '已完成' ? 'completed' : ''}}">{{item.status}}</text>
+      </view>
+
+      <view class="order-items">
+        <view class="item-preview" wx:for="{{item.items}}" wx:for-item="dish" wx:key="id" wx:if="{{index < 3}}">
+          <image class="preview-image" src="{{dish.image}}" mode="aspectFill"></image>
+        </view>
+        <view class="more-items" wx:if="{{item.items.length > 3}}">
+          <text>+{{item.items.length - 3}}</text>
+        </view>
+      </view>
+
+      <view class="order-info">
+        <text class="order-count">共{{item.totalCount}}份菜品</text>
+        <text class="order-price">¥{{item.totalPrice}}</text>
+      </view>
+
+      <view class="order-actions">
+        <view class="action-btn secondary" bindtap="deleteOrder" data-index="{{index}}">删除</view>
+        <view class="action-btn primary" bindtap="viewDetail" data-index="{{index}}">详情</view>
+        <view class="action-btn primary" bindtap="reorder" data-index="{{index}}">再来一单</view>
+      </view>
+    </view>
+  </view>
+</view>

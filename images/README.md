@@ -1,7 +1,3 @@
-# CaiPu
-微信小程序家庭菜谱
-
-# First Version V1.0.0
 # 菜品图片说明
 
 本目录需要放置38道菜品的图片文件。
@@ -171,8 +167,3 @@ Chinese cuisine braised pork belly, professional food photography, warm lighting
 ## 当前状态
 
 如无实际图片,小程序会显示默认占位符,不影响功能使用。可以后续补充图片资源。
-
-## 存在问题
-1. 分类页中招牌热菜中的，加入购物车文字显示存在遮挡；
-2. 分类页中主食类中的，加入购物车文字显示存在遮挡；
-

@@ -1,0 +1,53 @@
+<view class="container">
+  <view class="category-page">
+    <!-- 左侧分类栏 -->
+    <scroll-view class="category-sidebar" scroll-y>
+      <view
+        class="category-item {{item.id === currentCategoryId ? 'active' : ''}}"
+        wx:for="{{categories}}"
+        wx:key="id"
+        bindtap="switchCategory"
+        data-id="{{item.id}}"
+      >
+        <text class="category-icon">{{item.icon}}</text>
+        <text class="category-name">{{item.name}}</text>
+      </view>
+    </scroll-view>
+
+    <!-- 右侧菜品列表 -->
+    <scroll-view class="dish-list" scroll-y>
+      <view class="dish-item card" wx:for="{{menuList}}" wx:key="id" wx:if="{{item.categoryId === currentCategoryId}}">
+        <view class="dish-image-wrapper">
+          <image class="dish-image" src="{{item.image}}" mode="aspectFill" binderror="onImageError" data-id="{{item.id}}" wx:if="{{!item.imageError}}"></image>
+          <view class="dish-placeholder" wx:else>
+            <text class="placeholder-emoji">{{item.placeholder}}</text>
+          </view>
+        </view>
+        <view class="dish-info">
+          <view class="dish-header">
+            <text class="dish-name">{{item.name}}</text>
+            <view class="rating" wx:if="{{item.rating}}">
+              <text class="rating-star">★</text>
+              <text class="rating-score">{{item.rating}}</text>
+            </view>
+          </view>
+          <text class="dish-desc">{{item.description}}</text>
+          <view class="dish-tags" wx:if="{{item.hot || (item.tags && item.tags.length > 0)}}">
+            <text class="tag hot-tag" wx:if="{{item.hot}}">热销</text>
+            <text class="tag" wx:for="{{item.tags}}" wx:for-item="tag" wx:key="index" wx:if="{{index < 2}}">{{tag}}</text>
+          </view>
+          <view class="dish-bottom">
+            <view class="price-info">
+              <view class="price-wrapper">
+                <text class="dish-price">¥{{item.price}}</text>
+                <text class="original-price" wx:if="{{item.originalPrice}}">¥{{item.originalPrice}}</text>
+              </view>
+              <text class="dish-sold">已售{{item.sold}}份</text>
+            </view>
+            <view class="add-btn" bindtap="addToCart" data-dish="{{item}}">加入购物车</view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>
