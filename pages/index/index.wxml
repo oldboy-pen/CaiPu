@@ -23,9 +23,9 @@
       <text class="nav-icon">📋</text>
       <text class="nav-text">订单</text>
     </view>
-    <view class="nav-item">
-      <text class="nav-icon">📍</text>
-      <text class="nav-text">门店</text>
+    <view class="nav-item" bindtap="goToAdmin">
+      <text class="nav-icon">👨‍💼</text>
+      <text class="nav-text">管理员</text>
     </view>
   </view>
 
@@ -57,7 +57,7 @@
             <text class="dish-sold">已售{{item.sold}}</text>
           </view>
         </view>
-        <view class="add-btn" bindtap="addToCart" data-dish="{{item}}" catchtap="true">+</view>
+        <view class="add-btn" catchtap="addToCart" data-dish="{{item}}">+</view>
       </view>
     </scroll-view>
   </view>
@@ -93,7 +93,7 @@
               <text class="hot-price">¥{{item.price}}</text>
               <text class="hot-original-price" wx:if="{{item.originalPrice}}">¥{{item.originalPrice}}</text>
             </view>
-            <view class="add-btn-small" bindtap="addToCart" data-dish="{{item}}" catchtap="true">加入购物车</view>
+            <view class="add-btn-small" catchtap="addToCart" data-dish="{{item}}">加入购物车</view>
           </view>
         </view>
       </view>

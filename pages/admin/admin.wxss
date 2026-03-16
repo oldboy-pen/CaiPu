@@ -1,0 +1,190 @@
+/* 管理员通知页面样式 */
+.admin-page {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.admin-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30rpx 20rpx;
+  background-color: #FF6B6B;
+  color: white;
+}
+
+.admin-title {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.badge {
+  background-color: #ff4444;
+  color: white;
+  font-size: 24rpx;
+  padding: 4rpx 16rpx;
+  border-radius: 20rpx;
+  min-width: 40rpx;
+  text-align: center;
+}
+
+/* 空通知状态 */
+.empty-notifications {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 200rpx 0;
+}
+
+.empty-icon {
+  font-size: 120rpx;
+  margin-bottom: 20rpx;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: #999;
+}
+
+/* 通知列表 */
+.notifications-list {
+  height: calc(100vh - 200rpx);
+  padding: 20rpx;
+}
+
+.notification-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20rpx;
+  padding: 20rpx;
+  background-color: white;
+  border-radius: 12rpx;
+  position: relative;
+}
+
+.notification-item.unread {
+  background-color: #fff5f5;
+  border-left: 4rpx solid #FF6B6B;
+}
+
+.notification-item.read {
+  opacity: 0.8;
+}
+
+.notification-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15rpx;
+}
+
+.notification-type {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+}
+
+.type-icon {
+  font-size: 28rpx;
+}
+
+.type-text {
+  font-size: 26rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.notification-time {
+  font-size: 22rpx;
+  color: #999;
+}
+
+/* 订单详情 */
+.notification-content {
+  margin-top: 10rpx;
+}
+
+.order-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+  margin-bottom: 15rpx;
+}
+
+.order-id,
+.order-price,
+.order-count,
+.order-status {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.order-price {
+  color: #FF6B6B;
+  font-weight: bold;
+}
+
+.order-items {
+  background-color: #f9f9f9;
+  padding: 15rpx;
+  border-radius: 8rpx;
+}
+
+.items-title {
+  display: block;
+  font-size: 24rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.item {
+  display: block;
+  font-size: 22rpx;
+  color: #666;
+  margin-bottom: 6rpx;
+  padding-left: 20rpx;
+}
+
+/* 未读标记 */
+.unread-dot {
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+  width: 16rpx;
+  height: 16rpx;
+  background-color: #ff4444;
+  border-radius: 50%;
+}
+
+/* 底部操作栏 */
+.admin-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  gap: 10rpx;
+  padding: 15rpx 20rpx;
+  background-color: white;
+  border-top: 1rpx solid #eee;
+  box-shadow: 0 -2rpx 10rpx rgba(0,0,0,0.1);
+}
+
+.action-btn {
+  flex: 1;
+  padding: 20rpx;
+  border-radius: 8rpx;
+  font-size: 26rpx;
+  text-align: center;
+  color: white;
+}
+
+.clear-btn {
+  background-color: #999;
+}
+
+.mark-all-btn {
+  background-color: #FF6B6B;
+}

@@ -1,4 +1,5 @@
 const app = getApp()
+const notification = require('../../utils/notification.js')
 
 Page({
   data: {
@@ -167,6 +168,9 @@ Page({
             let orders = wx.getStorageSync('orders') || []
             orders.unshift(order)
             wx.setStorageSync('orders', orders)
+
+            // 发送订单通知给管理员
+            notification.sendOrderNotification(order)
 
             // 清空购物车
             app.globalData.cart = []

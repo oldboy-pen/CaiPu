@@ -133,5 +133,12 @@ Page({
     wx.switchTab({
       url: '/pages/order/order'
     })
+  },
+
+  // 跳转到管理员页面
+  goToAdmin() {
+    wx.navigateTo({
+      url: '/pages/admin/admin'
+    })
   }
 })

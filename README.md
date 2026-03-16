@@ -176,3 +176,13 @@ Chinese cuisine braised pork belly, professional food photography, warm lighting
 1. 分类页中招牌热菜中的，加入购物车文字显示存在遮挡；
 2. 分类页中主食类中的，加入购物车文字显示存在遮挡；
 
+
+# 修复问题 20260316 
+
+1. 推荐菜品区域的"+"按钮：
+## 将 bindtap="addToCart" data-dish="{{item}}" catchtap="true" 改为 catchtap="addToCart" data-dish="{{item}}"
+## 使用 catchtap 阻止事件冒泡，避免触发其他点击事件
+
+2. 热门菜品的"加入购物车"按钮：
+## 将 bindtap="addToCart" data-dish="{{item}}" catchtap="true" 改为 catchtap="addToCart" data-dish="{{item}}"
+## 同样使用 catchtap 阻止事件冒泡

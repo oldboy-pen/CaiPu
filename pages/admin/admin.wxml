@@ -1,0 +1,58 @@
+<view class="container">
+  <view class="admin-page">
+    <view class="admin-header">
+      <text class="admin-title">管理员通知</text>
+      <view class="badge" wx:if="{{unreadCount > 0}}">{{unreadCount}}</view>
+    </view>
+
+    <!-- 空通知状态 -->
+    <view class="empty-notifications" wx:if="{{isEmpty}}">
+      <text class="empty-icon">📭</text>
+      <text class="empty-text">暂无通知</text>
+    </view>
+
+    <!-- 通知列表 -->
+    <scroll-view class="notifications-list" scroll-y wx:else>
+      <view class="notification-item {{item.read ? 'read' : 'unread'}} card" 
+            wx:for="{{notifications}}" 
+            wx:key="id"
+            bindtap="viewNotification"
+            data-id="{{item.id}}">
+        
+        <view class="notification-header">
+          <view class="notification-type">
+            <text class="type-icon">{{item.type === 'new_order' ? '📋' : '📢'}}</text>
+            <text class="type-text">{{item.type === 'new_order' ? '新订单' : '系统通知'}}</text>
+          </view>
+          <text class="notification-time">{{item.createTime}}</text>
+        </view>
+
+        <!-- 订单详情 -->
+        <view class="notification-content" wx:if="{{item.type === 'new_order'}}">
+          <view class="order-info">
+            <text class="order-id">订单号: #{{item.order.id}}</text>
+            <text class="order-price">总价: ¥{{item.order.totalPrice}}</text>
+            <text class="order-count">共{{item.order.totalCount}}份菜品</text>
+            <text class="order-status">状态: {{item.order.status}}</text>
+          </view>
+
+          <view class="order-items">
+            <text class="items-title">菜品清单:</text>
+            <text class="item" wx:for="{{item.order.items}}" wx:for-item="dish" wx:key="id">
+              {{dish.name}} x{{dish.count}} (¥{{dish.price}})
+            </text>
+          </view>
+        </view>
+
+        <!-- 未读标记 -->
+        <view class="unread-dot" wx:if="{{!item.read}}"></view>
+      </view>
+    </scroll-view>
+
+    <!-- 底部操作栏 -->
+    <view class="admin-footer" wx:if="{{!isEmpty}}">
+      <view class="action-btn clear-btn" bindtap="clearAllNotifications">清空所有通知</view>
+      <view class="action-btn mark-all-btn" bindtap="markAllAsRead">全部标记已读</view>
+    </view>
+  </view>
+</view>

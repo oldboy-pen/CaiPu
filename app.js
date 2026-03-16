@@ -27,7 +27,7 @@ App({
       { id: 12, categoryId: 2, name: '夫妻肺片', price: 48, originalPrice: 55, image: '/images/fuqifeipian.jpg', sold: 1234, rating: 4.8, description: '传统川味,麻辣爽口,荤素搭配,风味独特', tags: ['川菜'], stock: 50 },
       { id: 13, categoryId: 2, name: '凉拌海蜇', price: 38, originalPrice: 42, image: '/images/liangbanhai.jpg', sold: 876, rating: 4.5, description: '海蜇爽口,蒜香浓郁,开胃解腻,清新爽口', tags: ['海鲜'], stock: 40 },
       { id: 14, categoryId: 2, name: '花生米拌豆干', price: 25, originalPrice: 28, image: '/images/peasants.jpg', sold: 1567, rating: 4.4, description: '香脆花生,嫩滑豆干,咸香适口,经典凉菜', tags: ['素菜'], stock: 80 },
-      { id: 39, categoryId: 2, name: '花生米拌豆干', price: 25, originalPrice: 28, image: '/images/peasants.jpg', sold: 1567, rating: 4.4, description: '香脆花生,嫩滑豆干,咸香适口,经典凉菜', tags: ['素菜'], stock: 80 },
+      { id: 39, categoryId: 2, name: '凉拌折耳根', price: 25, originalPrice: 28, image: '/images/liangbanzheergeng.jpg', sold: 1567, rating: 4.4, description: '传统川味，清脆爽口，开胃解腻，老少皆宜', tags: ['素菜'], stock: 80 },
 
       // 主食类
       { id: 15, categoryId: 3, name: '精品米饭', price: 2, originalPrice: 3, image: '/images/mifan.jpg', sold: 5678, rating: 4.9, description: '东北大米,颗粒饱满,香甜可口,软糯适中', tags: ['主食', '必点'], stock: 200, hot: true },
